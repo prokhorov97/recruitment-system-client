@@ -8,7 +8,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
+    "watch": "npm install --force && ng build --configuration production",
     "test": "ng test",
     "prebuild": "cd "
   },
