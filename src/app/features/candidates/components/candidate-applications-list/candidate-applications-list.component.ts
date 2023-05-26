@@ -4,11 +4,11 @@ import { MatChipInputEvent } from "@angular/material/chips";
 import { Router } from "@angular/router";
 
 @Component({
-    selector: 'candidates-list',
-    templateUrl: './candidates-list.component.html',
-    styleUrls: ['./candidates-list.component.scss']
+    selector: 'candidate-applications-list',
+    templateUrl: './candidate-applications-list.component.html',
+    styleUrls: ['./candidate-applications-list.component.scss']
 })
-export class CandidatesListComponent implements OnInit { 
+export class CandidateApplicationsListComponent implements OnInit { 
     isDataLoaded: boolean = true;
     skillsFormControl = new FormControl([]);
     skills: any[] = [];
@@ -107,7 +107,6 @@ export class CandidatesListComponent implements OnInit {
     ){}
 
     ngOnInit(): void {
-        throw new Error("Method not implemented.");
     }
 
     removeSkill(keyword: string) {

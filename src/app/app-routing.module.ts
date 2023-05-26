@@ -11,6 +11,8 @@ import { VacancyApplicationComponent } from './features/vacancies/components/vac
 import { CandidatesListComponent } from './features/candidates/components/candidates-list/candidates-list.component';
 import { VacancyCreationComponent } from './features/vacancies/components/vacancy-creation/vacancy-creation.component';
 import { GratitudeComponent } from './core/components/gratitude/gratitude.component';
+import { CandidateApplicationsListComponent } from './features/candidates/components/candidate-applications-list/candidate-applications-list.component';
+import { CandidateCardComponent } from './features/candidates/components/candidate-card/candidate-card.component';
 
 const routes: Routes = [
 
@@ -38,6 +40,16 @@ const routes: Routes = [
     path: 'candidates',
     title: 'Кандидаты',
     component: CandidatesListComponent
+  },
+  {
+    path: 'candidate/:id',
+    title: 'Карточка кандидата',
+    component: CandidateCardComponent
+  },
+  {
+    path: 'applications',
+    title: 'Отклики',
+    component: CandidateApplicationsListComponent
   },
   {
     path: 'candidate',

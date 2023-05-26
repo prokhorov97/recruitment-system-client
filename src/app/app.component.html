@@ -1,14 +1,15 @@
 <div class="header-wrapper">
     <header>
         <img routerLink="/vacancies" src="assets/images/coding_by_paws3.png" width="100px" height="100px">
-        <a routerLink="/applications">Отклики</a>
-        <a routerLink="/candidates">Кандидаты</a>
+        <a routerLink="/applications">Отклики<mat-icon></mat-icon></a>
+        <a routerLink="/candidates">Кандидаты<mat-icon></mat-icon></a>
 
         <a *ngIf="loginService.isLoggedIn()" routerLink="/vacancies">Вакансии</a>
 
-        <a *ngIf="!loginService.isLoggedIn()" [matMenuTriggerFor]="vacanciesMenu">Вакансии</a>
+        <a *ngIf="!loginService.isLoggedIn()" [matMenuTriggerFor]="vacanciesMenu">Вакансии<mat-icon>arrow_drop_down</mat-icon></a>
         <mat-menu #vacanciesMenu="matMenu">
-            <button [routerLink]="'/vacancies'" mat-menu-item>Список вакансий</button>
+            <button [routerLink]="'/vacancies'" mat-menu-item>Общий список вакансий</button>
+            <button [routerLink]="'/vacancies'" mat-menu-item>Мои вакансии</button>
             <button [routerLink]="'/vacancy-creation'"mat-menu-item>Создать вакансию</button>
         </mat-menu>
     </header>

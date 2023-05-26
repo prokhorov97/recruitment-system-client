@@ -1,0 +1,72 @@
+<div class="candidate">
+    <div class="application-wrapper">
+        <div class="application">
+            <div>Текущий этап: {{candidate.application.status}}</div>   
+            <div class="application-status">
+              
+                <!-- <button class="application-button" mat-flat-button color="primary">Просмотреть</button> -->
+                <!-- <button class="application-button" mat-flat-button color="primary">Одобрить скриннинг</button> -->
+                <button class="application-button" mat-flat-button color="primary">Отправить оффер</button>
+                <button class="application-button" mat-flat-button color="warn">Отказать</button>
+            </div>
+
+        </div>
+
+        <div class="comment">
+            <mat-form-field appearance="outline">
+                <textarea matInput placeholder="Комментарий">{{candidate.application.comment}}</textarea>
+            </mat-form-field>
+            <button class="application-button" mat-flat-button color="primary">Сохранить комментарий</button>
+        </div>
+    </div>
+    
+    <div class="candidate-card">
+        <div class="candidate-card-header">
+            {{candidate.name}} {{candidate.position_name}}
+        </div>
+        <div class="candidate-work-requiments">
+            <div>{{candidate.expected_salary}}</div>
+            <div>{{candidate.city.name}}</div>
+            <div>Возраст: {{candidate.age}}</div>
+            <div>Стаж: {{candidate.expirience}}</div>
+        </div>
+        <div class="candidate-card-content">
+            <div class="description">{{candidate.description}}</div>
+            <div class="content-item">
+                <div class="candidate-card-sub-header">
+                    Навыки:
+                </div>
+                {{candidate.skills}}
+            </div>
+            <div class="content-item">
+                <div class="candidate-card-sub-header">
+                    Опыт работы:
+                </div>
+                <div class="list" *ngFor="let experience of candidate.expiriences">
+                    <div >
+                        {{experience.position_name}} {{experience.company_name}}({{experience.start_date}} - {{experience.end_date}})
+                    </div>
+                    <div>
+                        {{experience.description}}
+                    </div>
+                </div>
+            </div>
+            <div class="content-item">
+                <div class="candidate-card-sub-header">
+                    Образование:
+                </div>
+                <mat-list>
+                    <mat-list-item *ngFor="let education of candidate.educations">
+                        <div>
+                            {{education.university_name}} {{education.specialization}}({{education.year_start}} - {{education.year_end}})
+                        </div>
+                    </mat-list-item>
+                </mat-list>
+            </div>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>
+<!-- <modal *ngIf="(modalService.isVisible)"> 
+    <candidate-response></candidate-response>
+</modal> -->

@@ -7,7 +7,7 @@
                     <ng-template matStepLabel>Персональные данные</ng-template>
         
                     <mat-form-field  class="filter-field" appearance="outline">
-                        <mat-label>Город</mat-label>
+                        <mat-label>Город проживания</mat-label>
                         <mat-select  formControlName="city">
                             <mat-option>--</mat-option>
                             <mat-option value="one">Москва</mat-option>
@@ -16,6 +16,11 @@
                         </mat-select>
                     </mat-form-field>
         
+                    <!-- <mat-form-field appearance="outline">
+                        <mat-label>Желаемая должность (на всякий случай)</mat-label>
+                        <input matInput placeholder="Введите фамилию" formControlName="last_name" required>
+                    </mat-form-field> -->
+
                     <mat-form-field appearance="outline">
                         <mat-label>Фамилия</mat-label>
                         <input matInput placeholder="Введите фамилию" formControlName="last_name" required>

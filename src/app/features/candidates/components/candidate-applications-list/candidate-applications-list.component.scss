@@ -1,0 +1,144 @@
+.candidates {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+}
+
+.candidate-list-item {
+    margin-bottom: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    max-width: max-content;
+    background-color: #fff;
+}
+
+.candidate-preview {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 20px;
+    width: 700px;
+}
+
+.candidate-work, .candidate-contacts, .candidate-name {
+    display: flex;
+    white-space: break-spaces;
+    gap: 20px;
+    flex-wrap: wrap;
+
+    a {
+        color: unset;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+}
+
+.candidate-name {
+    font-weight: bold;
+    white-space: break-spaces;
+}
+
+.candidate-skills {
+       white-space: break-spaces;
+}
+
+.candidate-list-fliters-wrapper {
+    position: relative;
+    top: 68px;
+}
+
+.candidate-list-filters {
+    display: flex;
+    flex-direction: column;
+    // gap: 20px;
+    position: sticky;
+    top: 100px;
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    background-color: #fff;
+}
+
+.filter-field {
+    width: 100%;
+}
+
+.candidates-list-header {
+    font-size: 36px;
+    font-weight: bold;
+    margin: 20px 0px;
+}
+
+
+.candidates-list-sub-header {
+    font-size: 32px;
+    line-height: 32px;
+}
+
+.filter-button {
+    border-radius: 10px;
+    height: 56px;
+}
+
+@media (max-width: 1100px) {
+    .candidates {
+        flex-direction: column;
+        gap: 20px;
+    } 
+
+    // .candidate-preview {
+    //     min-width: unset;
+    //     max-width: 700px;
+    // }
+
+    .candidate-list-fliters-wrapper {
+        top: 0px;
+    }
+
+    .candidate-list-filters {
+        flex-direction: row;
+        padding-bottom: 0px;
+        gap: 20px;
+    }
+
+    mat-list {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+    }
+}
+
+.range-filter {
+    display: flex;
+    gap: 20px;
+
+    .range-field {
+        max-width: 220px;
+    }
+}
+
+@media (max-width: 800px) {
+    .candidate-preview {
+        min-width: unset;
+        width: unset;
+        max-width: 700px;
+    }
+}
+
+@media (max-width:500px) {
+    .candidate-list-fliters-wrapper {
+        display: none;
+    }
+    
+    .candidates {
+        flex-direction: column;
+    }
+}
+

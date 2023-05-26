@@ -1,0 +1,98 @@
+.candidate {
+    display: flex;
+    justify-content: center;
+    // width: 700px;
+    font-size: 16px;
+    gap: 40px;
+}
+
+.application, .comment {
+    display: flex;
+    flex-direction: column;
+    max-width: 350px;
+    position: sticky;
+    top: 140px;
+    padding: 20px;
+    gap: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    background-color: #fff;
+}
+
+.comment {
+    top: 277px;
+}
+
+.application-wrapper {
+    position: relative;
+    top: 132px;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.application-status {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.candidate-card {
+    display: flex;
+    flex-direction: column;
+    max-width: 700px;
+    gap: 20px;
+}
+
+.candidate-card-header {
+    font-size: 36px;
+    line-height: 36px;
+    font-weight: bold;
+}
+
+
+.candidate-work-requiments {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.candidate-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+
+.content-item {
+    white-space: break-spaces; 
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.candidate-card-sub-header {
+    font-size: 32px;
+    line-height: 32px;
+    font-weight: bold;
+    margin: 20px 0px;
+}
+
+.application-button {
+    max-width: fit-content;
+}
+
+mat-list-item {
+    div {
+        // white-space: break-spaces;
+    }
+}

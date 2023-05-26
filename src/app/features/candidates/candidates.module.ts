@@ -16,10 +16,14 @@ import { CandidatesService } from "./services/candidates.service";
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
 import { CandidatesListComponent } from "./components/candidates-list/candidates-list.component";
+import { CandidateApplicationsListComponent } from "./components/candidate-applications-list/candidate-applications-list.component";
+import { CandidateCardComponent } from "./components/candidate-card/candidate-card.component";
 
 @NgModule({
     declarations: [
         CandidatesListComponent,
+        CandidateApplicationsListComponent,
+        CandidateCardComponent
     ],
     imports: [
         MatListModule,
@@ -41,6 +45,8 @@ import { CandidatesListComponent } from "./components/candidates-list/candidates
     ],
     exports: [
         CandidatesListComponent,
+        CandidateApplicationsListComponent,
+        CandidateCardComponent
     ],
     providers: [
         CandidatesService

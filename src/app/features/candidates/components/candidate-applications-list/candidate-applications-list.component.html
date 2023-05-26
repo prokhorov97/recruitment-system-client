@@ -2,19 +2,35 @@
     <div [style.visibility]="candidates.length != 0 ? 'visible' : 'hidden'" class="candidate-list-fliters-wrapper">
         <div class="candidate-list-filters">
             <mat-form-field  class="filter-field" appearance="outline">
-                <mat-label>Поиск по вакансии</mat-label>
-                <input  matInput>
-            </mat-form-field>
-
-            <mat-form-field  class="filter-field" appearance="outline">
-                <mat-label>Город</mat-label>
+                <mat-label>Мои вакансии</mat-label>
                 <mat-select multiple>
-                    <mat-option value="one">Москва</mat-option>
-                    <mat-option value="two">СПБ</mat-option>
-                    <mat-option value="other">Другое</mat-option>
+                    <mat-option value="one">Вакансия 1</mat-option>
+                    <mat-option value="two">Вакансия 2</mat-option>
+                    <mat-option value="three">Вакансия 3</mat-option>
                 </mat-select>
             </mat-form-field>
-            
+
+            <div class="range-filter">
+                <mat-form-field  class="range-field" appearance="outline">
+                    <mat-label>Город</mat-label>
+                    <mat-select multiple>
+                        <mat-option value="one">Москва</mat-option>
+                        <mat-option value="two">СПБ</mat-option>
+                        <mat-option value="other">Другое</mat-option>
+                    </mat-select>
+                </mat-form-field>
+    
+                <mat-form-field  class="range-field" appearance="outline">
+                    <mat-label>Этап отбора</mat-label>
+                    <mat-select multiple>
+                        <mat-option value="one">Получен отклик</mat-option>
+                        <mat-option value="two">Назначено собеседование</mat-option>
+                        <mat-option value="other">Отправлен оффер</mat-option>
+                        <mat-option value="three">Принят оффер</mat-option>
+                        <mat-option value="three">Отказ</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
 
             <div class="range-filter">
                 <mat-form-field  class="range-field" appearance="outline">
@@ -63,22 +79,14 @@
     
 
     <mat-list role="list">
-        <div class="candidates-list-header" mat-subheader>Кандидаты</div>
+        <div class="candidates-list-header" mat-subheader>Отклики</div>
         <div class="candidates-list-sub-header" *ngIf="candidates.length == 0">Данных нет</div>
         <mat-list-item class="candidate-list-item" *ngFor="let candidate of candidates">
             <div class="candidate-preview" (click)="openCandidate(candidate)">
                 <div class="candidate-work"><div>{{candidate.expected_salary}} руб.</div><div>{{candidate.city}}</div></div>
                 <div class="candidate-name">{{candidate.fio}} (Стаж {{candidate.experience_years}})</div>
                 <div class="candidate-skills">{{candidate.skills}}</div>
-                <div class="candidate-contacts">
-                    <div>{{candidate.phone}}</div>
-                    <div>
-                        <a [href]="'mailto:' + candidate.email">{{candidate.email}}</a>
-                    </div>
-                    <div>
-                        <a [href]="'https://t.me/'+ candidate.telegram">@{{candidate.telegram}}</a>
-                    </div>
-                </div>
+                <div class="candidate-contacts"><div>{{candidate.phone}}</div><div><a [href]="'mailto:' + candidate.email">{{candidate.email}}</a></div><div><a [href]="'https://t.me/'+ candidate.telegram">@{{candidate.telegram}}</a></div></div>
             </div>
         </mat-list-item>
     </mat-list>
