@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    background-color: #fbfbfb;
+    font-family: 'Inter';
+    // font-size: 24px;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+mat-list {
+    padding: 0px !important;
+}
+
+mat-list-item {
+    height: fit-content !important;
+}
+
+mat-list-item:hover {
+    box-shadow: 2px 6px 6px rgba(0, 0, 0, 0.5) !important;
+    cursor: pointer !important;
+}
+
+.mdc-notched-outline__leading {
+    border-radius: 10px 0 0 10px !important;
+    min-width: 10px !important;
+}
+  
+.mdc-notched-outline__trailing {
+    border-radius: 0 10px 10px 0 !important;
+}
+
+phone-input input {
+    border: none !important;
+    max-width: 35px;
+}
+
+.mat-mdc-form-field-subscript-wrapper {
+    height: 20px !important;
+}

@@ -1,0 +1,55 @@
+<div class="vacancies">
+    <div [style.visibility]="vacancies.length != 0 ? 'visible' : 'hidden'" class="vacancy-list-fliters-wrapper">
+        <div class="vacancy-list-filters">
+            <mat-form-field class="filter-field" appearance="outline">
+                <mat-label>Поиск по названию</mat-label>
+                <input matInput placeholder="Введите название вакансии">
+            </mat-form-field>
+
+            <mat-form-field  class="filter-field" appearance="outline">
+                <mat-label>Город</mat-label>
+                <mat-select multiple>
+                    <mat-option value="one">Москва</mat-option>
+                    <mat-option value="two">СПБ</mat-option>
+                    <mat-option value="other">Другое</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field  class="filter-field" appearance="outline">
+                <mat-label>Опыт работы</mat-label>
+                <mat-select multiple>
+                    <mat-option value="one">Менее 1 года</mat-option>
+                    <mat-option value="one">1-3 года</mat-option>
+                    <mat-option value="one">3-5 лет</mat-option>
+                    <mat-option value="two">Более 5 лет</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field  class="filter-field" appearance="outline">
+                <mat-label>Формат работы</mat-label>
+                <mat-select multiple>
+                    <mat-option value="one">Офис</mat-option>
+                    <mat-option value="two">Удаленный</mat-option>
+                    <mat-option value="two">Гибридный</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <button class="filter-button" mat-flat-button color="primary">Сбросить фильтры</button>
+        </div>
+    </div>
+    
+
+    <mat-list role="list">
+        <div class="vacancies-list-header" mat-subheader>Открытые вакансии</div>
+        <div class="vacancies-list-sub-header" *ngIf="vacancies.length == 0">Данных нет</div>
+        <mat-list-item class="vacancy-list-item" *ngFor="let vacancy of vacancies">
+            <div class="vacancy-preview" (click)="openVacancy(vacancy)">
+                <div class="vacancy-work"><div>{{vacancy.city}}</div> <div>{{vacancy.format}}</div></div>
+                <div class="vacancy-name">{{vacancy.name}}</div>
+                <div class="vacancy-experience">{{vacancy.experience}}</div>
+            </div>
+        </mat-list-item>
+    </mat-list>
+</div>
+<router-outlet></router-outlet>
+

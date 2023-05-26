@@ -1,0 +1,14 @@
+<div class="modal-background"
+   (click)="modalService.close()"
+></div>
+
+<div class="modal-form">
+   <div class="modal-close-button">
+      <button class="close-button" (click)="modalService.close()" mat-icon-button>
+        <mat-icon aria-hidden="false" aria-label="Закрыть" class="point">close</mat-icon>
+       </button>
+   </div>
+   <div class="modal-body">
+      <ng-content></ng-content>
+   </div>
+</div>

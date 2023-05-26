@@ -1,0 +1,38 @@
+<div class="vacancy">
+    <div class="vacancy-card">
+        <div class="vacancy-card-header">
+            {{vacancy.name}}
+        </div>
+        <div class="vacancy-work-requiments">
+            <div>Город: {{vacancy.city.name}}</div>
+            <div>Формат работы: {{vacancy.work_format.name}}</div>
+            <div>Опыт работы: {{vacancy.required_expirience.name}}</div>
+        </div>
+        <button class="application-button" mat-flat-button color="primary" (click)="respond()">Откликнуться</button>
+        <div class="vacancy-card-content">
+            <div class="description">{{vacancy.description}}</div>
+            <div class="content-item">
+                <div class="vacancy-card-sub-header">
+                    Вам предстоит заниматься:
+                </div>
+                {{vacancy.responsibilities}}
+            </div>
+            <div class="content-item">
+                <div class="vacancy-card-sub-header">
+                    Мы ожидаем:
+                </div>
+                {{vacancy.requirements}}
+            </div>
+            <div class="content-item">
+                <div class="vacancy-card-sub-header">
+                    Мы предлагаем:
+                </div>
+                {{vacancy.benefits}}
+            </div>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>
+<!-- <modal *ngIf="(modalService.isVisible)"> 
+    <vacancy-response></vacancy-response>
+</modal> -->

@@ -1,0 +1,143 @@
+<div class="vacancy-application-wrapper">
+    <div class="vacancy-application">
+        <header>Создание вакансии</header>
+        <mat-stepper orientation="vertical" [linear]="true" #stepper>
+            <mat-step [stepControl]="commonDataFormGroup">
+                <form class="application-sub-section" [formGroup]="commonDataFormGroup">
+                    <ng-template matStepLabel>Общая информация</ng-template>
+        
+                    <mat-form-field  class="filter-field" appearance="outline">
+                        <mat-label>Город</mat-label>
+                        <mat-select  formControlName="city">
+                            <mat-option>--</mat-option>
+                            <mat-option value="one">Москва</mat-option>
+                            <mat-option value="two">СПБ</mat-option>
+                            <mat-option value="other">Другое</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+        
+
+                    <mat-form-field  class="filter-field" appearance="outline">
+                        <mat-label>Заказчик</mat-label>
+                        <mat-select  formControlName="owner">
+                            <mat-option>--</mat-option>
+                            <mat-option value="one">Петров А.А.</mat-option>
+                            <mat-option value="two">Иванов Б.Б.</mat-option>
+                            <mat-option value="other">Сидоров Г.Г.</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    
+                    <mat-form-field  class="filter-field" appearance="outline">
+                        <mat-label>Формат работы</mat-label>
+                        <mat-select  formControlName="work_format">
+                            <mat-option>--</mat-option>
+                            <mat-option value="one">Удаленный</mat-option>
+                            <mat-option value="two">Гибридный</mat-option>
+                            <mat-option value="other">Офис</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+
+                    <div>
+                        <button mat-flat-button matStepperNext color="primary">Далее</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="conditionsFormGroup">
+                <form class="application-sub-section" [formGroup]="conditionsFormGroup">
+                    <ng-template matStepLabel>Требования</ng-template>
+        
+                    <mat-form-field appearance="outline">
+                        <mat-label>Минимальная зарплата</mat-label>
+                        <input matInput type="number" min="0" placeholder="Введите значение" formControlName="min_salary" required>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Максимальная зарплата</mat-label>
+                        <input matInput type="number" min="0" placeholder="Введите значение" formControlName="max_salary" required>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Зарплата, отображаемая в вакансии</mat-label>
+                        <input matInput placeholder="Введите значние" formControlName="public_salary" required>
+                    </mat-form-field>
+
+                    <mat-form-field  class="filter-field" appearance="outline">
+                        <mat-label>Требуемый опыт работы</mat-label>
+                        <mat-select  formControlName="required_experience">
+                            <mat-option>--</mat-option>
+                            <mat-option value="one">до 1 года</mat-option>
+                            <mat-option value="two">от 1 до 3 лет</mat-option>
+                            <mat-option value="other">от 3 до 5 лет</mat-option>
+                            <mat-option value="other2">от 5 лет</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div>
+                        <button mat-flat-button matStepperPrevious color="primary">Назад</button>
+                        <button mat-flat-button matStepperNext color="primary">Далее</button>
+                    </div>
+                </form>
+            </mat-step><mat-step [stepControl]="descriptionFormGroup">
+                <form [formGroup]="descriptionFormGroup">
+                    <ng-template matStepLabel>Описание вакансии</ng-template>
+
+                    <mat-form-field class="application-sub-section" appearance="outline">
+                        <mat-label>Описание вакансии</mat-label>
+                        <textarea matInput formControlName="description"></textarea>
+                    </mat-form-field>
+
+                    <mat-form-field class="application-sub-section" appearance="outline">
+                        <mat-label>Список обязанностей</mat-label>
+                        <textarea matInput formControlName="responsibilities"></textarea>
+                    </mat-form-field>
+
+                    <mat-form-field class="application-sub-section" appearance="outline">
+                        <mat-label>Список требований</mat-label>
+                        <textarea matInput formControlName="requirements"></textarea>
+                    </mat-form-field>
+
+                    <mat-form-field class="application-sub-section" appearance="outline">
+                        <mat-label>Список выгод</mat-label>
+                        <textarea matInput formControlName="benefits"></textarea>
+                    </mat-form-field>
+
+                    <div class="buttons">
+                        <div class="step-buttons">
+                            <button mat-flat-button matStepperPrevious color="primary">Назад</button>
+                            <button mat-flat-button matStepperNext color="primary">Далее</button>
+                        </div>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="skillsFormControl">
+                <form>
+                    <ng-template matStepLabel>Навыки</ng-template>
+                    
+                    <mat-form-field class="application-sub-section"  appearance="outline">
+                        <mat-label>Навыки</mat-label>
+                        <mat-chip-grid #chipGrid aria-label="Введите навыки" [formControl]="skillsFormControl">
+                          <mat-chip-row *ngFor="let skill of skills"
+                                        (removed)="removeSkill(skill)">
+                            {{skill}}
+                            <button matChipRemove [attr.aria-label]="'remove ' + skill">
+                              <mat-icon>cancel</mat-icon>
+                            </button>
+                          </mat-chip-row>
+                          <input placeholder="Введите навык и нажмите Enter..."
+                                 [matChipInputFor]="chipGrid"
+                                 (matChipInputTokenEnd)="addSkill($event)"/>
+                        </mat-chip-grid>
+                    </mat-form-field>
+
+                    <div class="buttons">
+                        <div class="step-buttons">
+                            <button mat-flat-button matStepperPrevious color="primary">Назад</button>
+                            <button mat-flat-button matStepperNext color="primary">Далее</button>
+                        </div>
+                    </div>
+                </form>
+            </mat-step>
+        </mat-stepper>
+    </div>
+    
+</div>

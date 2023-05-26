@@ -1,0 +1,121 @@
+.vacancies {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+}
+
+.vacancy-list-item {
+    margin-bottom: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    max-width: max-content;
+    background-color: #fff;
+}
+
+.vacancy-preview {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 20px;
+    width: 700px;
+}
+
+.vacancy-work {
+    display: flex;
+    white-space: break-spaces;
+    gap: 20px;
+}
+
+.vacancy-name {
+    font-weight: bold;
+    white-space: break-spaces;
+}
+
+.vacancy-list-fliters-wrapper {
+    position: relative;
+    top: 68px;
+}
+
+.vacancy-list-filters {
+    display: flex;
+    flex-direction: column;
+    // gap: 20px;
+    position: sticky;
+    top: 140px;
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    background-color: #fff;
+}
+
+.filter-field {
+    max-width: 300px;
+}
+
+.vacancies-list-header {
+    font-size: 36px;
+    font-weight: bold;
+    margin: 20px 0px;
+}
+
+
+.vacancies-list-sub-header {
+    font-size: 32px;
+    line-height: 32px;
+}
+
+.filter-button {
+    border-radius: 10px;
+    height: 56px;
+}
+
+@media (max-width: 1100px) {
+    .vacancies {
+        flex-direction: column;
+        gap: 20px;
+    } 
+
+    // .vacancy-preview {
+    //     min-width: unset;
+    //     max-width: 700px;
+    // }
+
+    .vacancy-list-fliters-wrapper {
+        top: 0px;
+    }
+
+    .vacancy-list-filters {
+        flex-direction: row;
+        padding-bottom: 0px;
+        gap: 20px;
+    }
+
+    mat-list {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+    }
+}
+
+@media (max-width: 800px) {
+    .vacancy-preview {
+        min-width: unset;
+        width: unset;
+        max-width: 700px;
+    }
+}
+
+@media (max-width:500px) {
+    .vacancy-list-fliters-wrapper {
+        display: none;
+    }
+    
+    .vacancies {
+        flex-direction: column;
+    }
+}
+
