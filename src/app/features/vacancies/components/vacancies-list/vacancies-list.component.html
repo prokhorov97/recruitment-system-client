@@ -3,8 +3,18 @@
         <form class="vacancy-list-filters">
             <mat-form-field class="filter-field" appearance="outline">
                 <mat-label>Поиск по вакансии</mat-label>
-                <input matInput [formControl]="vacancyFormControl"  (input)="filter()" (keydown)="filter()" placeholder="Введите вакансию">
+                <input matInput [formControl]="vacancyFormControl"  (input)="filter()"  placeholder="Введите вакансию">
             </mat-form-field>
+
+            <mat-form-field class="filter-field" appearance="outline">
+                <mat-label>Мин. ЗП</mat-label>
+                <input matInput type="number" min="0" [formControl]="minSalaryFormControl"  (input)="filter()">
+            </mat-form-field>
+
+            <mat-form-field class="filter-field" appearance="outline">
+                <mat-label>Макс. ЗП</mat-label>
+                <input matInput type="number" min="0" [formControl]="maxSalaryFormControl"  (input)="filter()">
+            </mat-form-field>    
 
             <mat-form-field  class="filter-field" appearance="outline">
                 <mat-label>Город</mat-label>
@@ -40,7 +50,7 @@
             <div class="vacancy-preview" (click)="openVacancy(vacancy)">
                 <div class="vacancy-work"><div>{{vacancy.city.name}}</div> <div>{{vacancy.workFormat.name}}</div></div>
                 <div class="vacancy-name">{{vacancy.name}} ({{vacancy.unitName}})</div>
-                <div class="vacancy-experience">{{vacancy.requiredExperience.name}}</div>
+                <div class="vacancy-conditions"><div>{{vacancy.publicSalary  | number:'1.0-0'}} руб.</div><div>{{vacancy.requiredExperience.name}}</div></div>
             </div>
         </mat-list-item>
     </mat-list>

@@ -80,6 +80,13 @@ mat-list {
     height: 56px;
 }
 
+.vacancy-conditions {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
 @media (max-width: 1100px) {
     .vacancies {
         flex-direction: column;

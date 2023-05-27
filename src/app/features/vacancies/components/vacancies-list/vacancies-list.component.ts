@@ -18,6 +18,8 @@ export class VacanciesListComponent implements OnInit {
     requiredExpiriences: any[] = [];
     
     vacancyFormControl = new FormControl('');
+    minSalaryFormControl = new FormControl();
+    maxSalaryFormControl = new FormControl();
     citiesFormControl = new FormControl([]);
     workFormatsFormControl = new FormControl([]);
     requiredExpiriencesFormControl = new FormControl([]);
@@ -72,17 +74,29 @@ export class VacanciesListComponent implements OnInit {
 
     filter() {
         let vacancyNameFilter = this.vacancyFormControl.value;
+        let minSalaryFilter = this.minSalaryFormControl.value;
+        let maxSalaryFilter = this.maxSalaryFormControl.value;
         let selectedCityIds = this.citiesFormControl.value?.map((city: any) => city.id);
         let selectedWorkFormatIds = this.workFormatsFormControl.value?.map((workFormat: any) => workFormat.id);
-        let requiredExpirienceId = this.requiredExpiriencesFormControl.value?.map((requiredExpirience: any) => requiredExpirience.id);
+        let requiredExpirienceIds = this.requiredExpiriencesFormControl.value?.map((requiredExpirience: any) => requiredExpirience.id);
 
         this.vacanciesFiltered = this.vacancies.filter(vacancy => vacancy.name.toLowerCase().includes(vacancyNameFilter?.toLowerCase()));
+
+        if (minSalaryFilter) 
+            this.vacanciesFiltered = this.vacanciesFiltered.filter(vacancy => vacancy.publicSalary >= minSalaryFilter);
         
+        if (maxSalaryFilter) 
+            this.vacanciesFiltered = this.vacanciesFiltered.filter(vacancy => vacancy.publicSalary <= maxSalaryFilter);
+
         if (selectedCityIds && selectedCityIds.length > 0)
             this.vacanciesFiltered = this.vacanciesFiltered.filter(vacancy => selectedCityIds?.some(id => id === vacancy.city.id));
 
         if (selectedWorkFormatIds && selectedWorkFormatIds.length > 0)
             this.vacanciesFiltered = this.vacanciesFiltered.filter(vacancy => selectedWorkFormatIds?.some(id => id === vacancy.workFormat.id));
+
+        if (requiredExpirienceIds && requiredExpirienceIds.length > 0)
+            this.vacanciesFiltered = this.vacanciesFiltered.filter(vacancy => requiredExpirienceIds?.some(id => id === vacancy.requiredExperience.id));
+        
     }
 
     // filterByVacancyName() {
@@ -100,7 +114,10 @@ export class VacanciesListComponent implements OnInit {
     
     resetFilters() {
         this.vacanciesFiltered = this.vacancies;
+        
         this.vacancyFormControl = new FormControl('');
+        this.minSalaryFormControl = new FormControl();
+        this.maxSalaryFormControl = new FormControl();
         this.citiesFormControl = new FormControl([]);
         this.workFormatsFormControl = new FormControl([]);
         this.requiredExpiriencesFormControl = new FormControl([]);
