@@ -99,11 +99,11 @@ export class VacanciesListComponent implements OnInit {
     // }
     
     resetFilters() {
-        // this.vacanciesFiltered = this.vacancies;
-        // this.vacancyFormControl = new FormControl('');
-        // this.citiesFormControl = new FormControl([]);
-        // this.workFormatsFormControl = new FormControl([]);
-        // this.requiredExpiriencesFormControl = new FormControl([]);
+        this.vacanciesFiltered = this.vacancies;
+        this.vacancyFormControl = new FormControl('');
+        this.citiesFormControl = new FormControl([]);
+        this.workFormatsFormControl = new FormControl([]);
+        this.requiredExpiriencesFormControl = new FormControl([]);
     }
 
     // vacancies: any[] = [

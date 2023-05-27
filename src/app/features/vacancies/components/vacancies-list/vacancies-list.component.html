@@ -2,8 +2,8 @@
     <div class="vacancy-list-fliters-wrapper">
         <form class="vacancy-list-filters">
             <mat-form-field class="filter-field" appearance="outline">
-                <mat-label>Поиск по названию</mat-label>
-                <input matInput [formControl]="vacancyFormControl" (input)="filter()" placeholder="Введите название вакансии">
+                <mat-label>Поиск по вакансии</mat-label>
+                <input matInput [formControl]="vacancyFormControl"  (input)="filter()" (keydown)="filter()" placeholder="Введите вакансию">
             </mat-form-field>
 
             <mat-form-field  class="filter-field" appearance="outline">
@@ -29,6 +29,7 @@
 
             <button class="filter-button" mat-flat-button color="primary" (click)="resetFilters()">Сбросить фильтры</button>
         </form>
+        
     </div>
     
 
