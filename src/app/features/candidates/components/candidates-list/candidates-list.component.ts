@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormControl } from "@angular/forms";
 import { MatChipInputEvent } from "@angular/material/chips";
 import { Router } from "@angular/router";
+import { LoginService } from "src/app/core/services/login.service";
 
 @Component({
     selector: 'candidates-list',
@@ -103,12 +104,17 @@ export class CandidatesListComponent implements OnInit {
 
     constructor(
         private router: Router,
+        private loginService: LoginService,
         // private vacanciesService: VacanciesService
     ){}
 
     ngOnInit(): void {
         throw new Error("Method not implemented.");
     }
+
+    logout(): void {
+        this.loginService.logout();
+      }
 
     removeSkill(keyword: string) {
         const index = this.skills.indexOf(keyword);

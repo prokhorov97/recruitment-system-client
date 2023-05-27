@@ -1,5 +1,5 @@
 import { ObserversModule } from "@angular/cdk/observers";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
 
@@ -11,12 +11,14 @@ export class VacanciesService {
     {}
 
     getVacanciesList() {
-        return this.httpClient.get(environment.apiUrl + '/api/vacancies', { 
-            headers : {
-                'Access-Control-Allow-Origin': '*',
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
-                'Access-Control-Allow-Headers': 'X-Requested-With,content-type'
-            }});
+        return this.httpClient.get(environment.apiUrl + '/api/vacancies');
     }
+
+    getVacancy(id: number) {
+        return this.httpClient.get(environment.apiUrl + '/api/vacancies/' + id);
+    }
+
+    // createVacancy(vacany: any) {
+    //     return this.httpClient.post(environment.apiUrl + '/api/vacancies/');
+    // }
 }

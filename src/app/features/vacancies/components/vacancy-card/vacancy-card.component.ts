@@ -1,14 +1,15 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Subscription } from "rxjs";
 import { ModalService } from "src/app/shared/services/modal.service";
+import { VacanciesService } from "../../services/vacancies.service";
 
 @Component({
     selector: 'vacancy-card',
     templateUrl: './vacancy-card.component.html',
     styleUrls: ['./vacancy-card.component.scss']
 })
-export class VacancyCardComponent {
+export class VacancyCardComponent implements OnInit {
     vacancyId: any = 0;
     vacancy: any = {
         id: 1,
@@ -37,11 +38,15 @@ export class VacancyCardComponent {
     }
 
     constructor(
-        public modalService: ModalService,
         private router: Router,
-        private activateRoute: ActivatedRoute
+        private activateRoute: ActivatedRoute,
+        private vacanciesService: VacanciesService
         ){
         this.vacancyId = activateRoute.snapshot.params['id'];
+    }
+    
+    ngOnInit(): void {
+        this.loadVacancy();
     }
     
     respond() {
@@ -54,5 +59,10 @@ export class VacancyCardComponent {
                 }
             }
         );
+    }
+
+    loadVacancy() {
+        this.vacanciesService.getVacancy(this.vacancyId)
+        .subscribe(result => this.vacancy = result);;
     }
 }

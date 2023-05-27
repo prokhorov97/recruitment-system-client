@@ -11,9 +11,9 @@ export class LoginClient {
 
   public login(username: string, password: string): Observable<string> {
     return this.http.post(
-      environment.apiUrl + '/user/login',
+      environment.apiUrl + '/api/login',
       {
-        username: username,
+        email: username,
         password: password,
       },
       { responseType: 'text' }

@@ -4,6 +4,7 @@ import { ModalService } from "./services/modal.service";
 import { MatIconModule } from "@angular/material/icon";
 import { PhoneInputComponent } from "./components/phone-input/phone-input.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { DictionaryService } from "./services/dictionary.service";
 
 @NgModule({
     declarations: [
@@ -15,7 +16,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
         PhoneInputComponent
     ],
     providers: [
-        ModalService
+        ModalService,
+        DictionaryService
     ],
     imports: [
         MatIconModule,

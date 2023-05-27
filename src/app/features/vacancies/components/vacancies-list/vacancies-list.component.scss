@@ -4,6 +4,10 @@
     justify-content: center;
 }
 
+mat-list {
+    min-width: 800px;
+}
+
 .vacancy-list-item {
     margin-bottom: 20px;
     border: 1px solid rgba(0, 0, 0, 0.2);
@@ -11,6 +15,7 @@
     border-radius: 20px;
     max-width: max-content;
     background-color: #fff;
+    min-width: 100%;
 }
 
 .vacancy-preview {
@@ -42,6 +47,7 @@
 .vacancy-list-filters {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     // gap: 20px;
     position: sticky;
     top: 140px;
@@ -53,7 +59,8 @@
 }
 
 .filter-field {
-    max-width: 300px;
+    // max-width: 400px;
+    min-width: 220px;
 }
 
 .vacancies-list-header {
@@ -91,13 +98,18 @@
     .vacancy-list-filters {
         flex-direction: row;
         padding-bottom: 0px;
-        gap: 20px;
+        column-gap: 20px;
     }
 
     mat-list {
         display: flex;
         flex-direction: column;
         align-self: center;
+        min-width: 100%;
+    }
+
+    .filter-field {
+        min-width: none;
     }
 }
 
@@ -110,10 +122,6 @@
 }
 
 @media (max-width:500px) {
-    .vacancy-list-fliters-wrapper {
-        display: none;
-    }
-    
     .vacancies {
         flex-direction: column;
     }

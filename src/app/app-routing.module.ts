@@ -13,9 +13,20 @@ import { VacancyCreationComponent } from './features/vacancies/components/vacanc
 import { GratitudeComponent } from './core/components/gratitude/gratitude.component';
 import { CandidateApplicationsListComponent } from './features/candidates/components/candidate-applications-list/candidate-applications-list.component';
 import { CandidateCardComponent } from './features/candidates/components/candidate-card/candidate-card.component';
+import { RegistrationComponent } from './core/components/registration/registration.component';
+import { LoginComponent } from './core/components/login/login.component';
 
 const routes: Routes = [
-
+  {
+    path: 'login',
+    title: 'Авторизация',
+    component: LoginComponent,
+  },
+  {
+    path: 'registration',
+    title: 'Регистрация',
+    component: RegistrationComponent,
+  },
   {
     path: 'vacancies',
     title: 'Вакансии',
