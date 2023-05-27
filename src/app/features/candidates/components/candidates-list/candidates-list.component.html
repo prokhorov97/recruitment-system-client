@@ -1,42 +1,39 @@
 <div class="candidates">
-    <div [style.visibility]="candidates.length != 0 ? 'visible' : 'hidden'" class="candidate-list-fliters-wrapper">
+    <div class="candidate-list-fliters-wrapper">
         <div class="candidate-list-filters">
             <mat-form-field  class="filter-field" appearance="outline">
                 <mat-label>Поиск по вакансии</mat-label>
-                <input  matInput>
+                <input   matInput [formControl]="vacancyFormControl" (input)="filter()">
             </mat-form-field>
 
             <mat-form-field  class="filter-field" appearance="outline">
                 <mat-label>Город</mat-label>
-                <mat-select multiple>
-                    <mat-option value="one">Москва</mat-option>
-                    <mat-option value="two">СПБ</mat-option>
-                    <mat-option value="other">Другое</mat-option>
+                <mat-select [formControl]="citiesFormControl" multiple (selectionChange)="filter()">
+                    <mat-option *ngFor="let city of cities" [value]="city">{{city.name}}</mat-option>
                 </mat-select>
             </mat-form-field>
-            
 
             <div class="range-filter">
                 <mat-form-field  class="range-field" appearance="outline">
                     <mat-label>Мин. ЗП</mat-label>
-                    <input type="number" min="0" matInput>
+                    <input type="number" min="0" matInput [formControl]="minSalaryFormControl" (input)="filter()">
                 </mat-form-field>
     
                 <mat-form-field  class="range-field" appearance="outline">
                     <mat-label>Макс. ЗП</mat-label>
-                    <input type="number" min="0" matInput>
+                    <input type="number" min="0" matInput [formControl]="maxSalaryFormControl" (input)="filter()">
                 </mat-form-field>
             </div>
 
             <div class="range-filter">
                 <mat-form-field  class="range-field" appearance="outline">
                     <mat-label>Мин. стаж</mat-label>
-                    <input type="number" min="0" matInput>
+                    <input type="number" min="0" matInput [formControl]="minExpFormControl" (input)="filter()">
                 </mat-form-field>
     
                 <mat-form-field  class="range-field" appearance="outline">
                     <mat-label>Макс. стаж</mat-label>
-                    <input type="number" min="0" matInput>
+                    <input type="number" min="0" matInput [formControl]="maxExpFormControl" (input)="filter()">
                 </mat-form-field>
             </div>
 
@@ -44,7 +41,7 @@
                 <mat-label>Необходимые навыки</mat-label>
                 <mat-chip-grid #chipGrid aria-label="Введите навыки" [formControl]="skillsFormControl">
                   <mat-chip-row *ngFor="let skill of skills"
-                                (removed)="removeSkill(skill)">
+                                (removed)="removeSkill(skill);">
                     {{skill}}
                     <button matChipRemove [attr.aria-label]="'remove ' + skill">
                       <mat-icon>cancel</mat-icon>
@@ -52,23 +49,23 @@
                   </mat-chip-row>
                   <input placeholder="Введите навык и нажмите Enter..."
                          [matChipInputFor]="chipGrid"
-                         (matChipInputTokenEnd)="addSkill($event)"/>
+                         (matChipInputTokenEnd)="addSkill($event);"/>
                 </mat-chip-grid>
             </mat-form-field>
 
 
-            <button class="filter-button" mat-flat-button color="primary">Сбросить фильтры</button>
+            <button class="filter-button" mat-flat-button color="primary" (click)="resetFilters()">Сбросить фильтры</button>
         </div>
     </div>
     
 
     <mat-list role="list">
         <div class="candidates-list-header" mat-subheader>Кандидаты</div>
-        <div class="candidates-list-sub-header" *ngIf="candidates.length == 0">Данных нет</div>
-        <mat-list-item class="candidate-list-item" *ngFor="let candidate of candidates">
+        <div class="candidates-list-sub-header" *ngIf="candidatesFiltered.length == 0">Данных нет</div>
+        <mat-list-item class="candidate-list-item" *ngFor="let candidate of candidatesFiltered">
             <div class="candidate-preview" (click)="openCandidate(candidate)">
-                <div class="candidate-work"><div>{{candidate.expected_salary}} руб.</div><div>{{candidate.city}}</div></div>
-                <div class="candidate-name">{{candidate.fio}} (Стаж {{candidate.experience_years}})</div>
+                <div class="candidate-work"><div>{{candidate.expectedSalary}} руб.</div><div>{{candidate.city.name}}</div></div>
+                <div class="candidate-name">{{candidate.fio}} {{candidate.desiredPosition}} (Стаж {{candidate.experience}})</div>
                 <div class="candidate-skills">{{candidate.skills}}</div>
                 <div class="candidate-contacts">
                     <div>{{candidate.phone}}</div>

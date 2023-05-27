@@ -11,6 +11,6 @@ export class CandidatesService {
     {}
 
     getCandidatesList() {
-        return this.httpClient.get(environment.apiUrl + '/api/vacancies');
+        return this.httpClient.get(environment.apiUrl + '/api/candidates');
     }
 }

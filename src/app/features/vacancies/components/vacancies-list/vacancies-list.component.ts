@@ -91,20 +91,7 @@ export class VacanciesListComponent implements OnInit {
             this.vacanciesFiltered = this.vacanciesFiltered.filter(vacancy => requiredExpirienceIds?.some(id => id === vacancy.requiredExperience.id));
         
     }
-
-    // filterByVacancyName() {
-    //     this.vacanciesFiltered =  this.vacancies.filter(vacancy => vacancy.name.includes(this.vacancyFormControl.value));
-    // }
-
-    // filterByCity() {
-    //     this.vacanciesFiltered = this.vacancies.filter(vacancy => {
-    //         let selectedCities = this.citiesFormControl.value; 
-    //         return selectedCities?.some((city: any) => {
-    //             vacancy.city.id == city.id
-    //         });
-    //     });
-    // }
-    
+   
     resetFilters() {
         this.vacanciesFiltered = this.vacancies;
         
@@ -115,60 +102,6 @@ export class VacanciesListComponent implements OnInit {
         this.workFormatsFormControl = new FormControl([]);
         this.requiredExpiriencesFormControl = new FormControl([]);
     }
-
-    // vacancies: any[] = [
-    //     {
-    //         id: 1,
-    //         name: 'Senior помидор Java (Платформа автоматизации процесса рекрутмента)',
-    //         city: 'Москва',
-    //         experience: '3-5 лет',
-    //         format: 'Гибридный формат работы'
-    //     },
-    //     {
-    //         id: 1,
-    //         name: 'Senior помидор Java (Платформа автоматизации процесса рекрутмента) 123123123123 123123',
-    //         city: 'Москва',
-    //         experience: '3-5 лет',
-    //         format: 'Гибридный формат работы'
-    //     },
-    //     {
-    //         id: 1,
-    //         name: 'Senior помидор Java (Платформа автоматизации процесса рекрутмента)',
-    //         city: 'Москва',
-    //         experience: '3-5 лет',
-    //         format: 'Гибридный формат работы'
-    //     },
-    //     {
-    //         id: 1,
-    //         name: 'Senior помидор Java (Платформа автоматизации процесса рекрутмента)',
-    //         city: 'Москва',
-    //         experience: '3-5 лет',
-    //         format: 'Гибридный формат работы'
-    //     },
-    //     {
-    //         id: 1,
-    //         name: 'Senior помидор Java (Платформа автоматизации процесса рекрутмента)',
-    //         city: 'Москва',
-    //         experience: '3-5 лет',
-    //         format: 'Гибридный формат работы'
-    //     },
-    //     {
-    //         id: 1,
-    //         name: 'Senior помидор Java (Платформа автоматизации процесса рекрутмента)',
-    //         city: 'Москва',
-    //         experience: '3-5 лет',
-    //         format: 'Гибридный формат работы'
-    //     },
-    //     {
-    //         id: 1,
-    //         name: 'Senior помидор Java (Платформа автоматизации процесса рекрутмента)',
-    //         city: 'Москва',
-    //         experience: '3-5 лет',
-    //         format: 'Гибридный формат работы'
-    //     }
-    // ];
-
-
 
     openVacancy(vacancy: any) {
         this.router.navigate(['/vacancy', vacancy.id]);
