@@ -11,31 +11,7 @@ import { VacanciesService } from "../../services/vacancies.service";
 })
 export class VacancyCardComponent implements OnInit {
     vacancyId: any = 0;
-    vacancy: any = {
-        id: 1,
-        name: 'Senior помидор Java (Платформа автоматизации процесса рекрутмента)',
-        city: {
-            id: 1, 
-            name: 'Москва'
-        },
-        work_format: {
-            id: 1,
-            name: 'Гибридный'
-        },
-        required_expirience: {
-            id: 1,
-            name: '3-5 лет'
-        },
-        description: 'Потрясающее описание вакансии Потрясающее описание вакансии Потрясающее описание вакансии Потрясающее описание вакансии Потрясающее описание вакансии Потрясающее описание вакансии Потрясающее описание вакансии Потрясающее описание вакансии Потрясающее описание вакансии Потрясающее описание вакансии',
-        responsibilities: 'Очень отвественная обязанность номер один Очень отвественная обязанность номер один;\n'+
-        'Очень отвественная обязанность номер один;\n' +
-        'Очень отвественная обязанность номер один Очень отвественная обязанность номер один;',
-        requirements: 'Очень важное требование номер один;\n' +
-        'Очень важное требование номер один;\n' +
-        'Очень важное требование номер один Очень важное требование номер один;',
-        benefits: `Очень важное условие номер один;
-        Очень важное условие номер один;`
-    }
+    vacancy: any;
 
     constructor(
         private router: Router,
@@ -63,6 +39,9 @@ export class VacancyCardComponent implements OnInit {
 
     loadVacancy() {
         this.vacanciesService.getVacancy(this.vacancyId)
-        .subscribe(result => this.vacancy = result);;
+        .subscribe(result => {
+            this.vacancy = result;
+            console.log(this.vacancy)
+        });
     }
 }

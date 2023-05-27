@@ -1,12 +1,16 @@
 <div class="vacancy">
-    <div class="vacancy-card">
+    <div *ngIf="!vacancy" class="vacancy-card-header">
+        Данных нет
+    </div>
+    <div *ngIf="vacancy" class="vacancy-card">
         <div class="vacancy-card-header">
-            {{vacancy.name}}
+            {{vacancy.name}} ({{vacancy.unitName}})
         </div>
         <div class="vacancy-work-requiments">
+            <div>{{vacancy.publicSalary  | number:'1.0-0'}} руб.</div>
             <div>Город: {{vacancy.city.name}}</div>
-            <div>Формат работы: {{vacancy.work_format.name}}</div>
-            <div>Опыт работы: {{vacancy.required_expirience.name}}</div>
+            <div>Формат работы: {{vacancy.workFormat.name}}</div>
+            <div>Опыт работы: {{vacancy.requiredExperience.name}}</div>
         </div>
         <button class="application-button" mat-flat-button color="primary" (click)="respond()">Откликнуться</button>
         <div class="vacancy-card-content">
@@ -16,6 +20,12 @@
                     Вам предстоит заниматься:
                 </div>
                 {{vacancy.responsibilities}}
+            </div>
+            <div class="content-item">
+                <div class="vacancy-card-sub-header">
+                    Необходимые навывки:
+                </div>
+                {{vacancy.skills}}
             </div>
             <div class="content-item">
                 <div class="vacancy-card-sub-header">
