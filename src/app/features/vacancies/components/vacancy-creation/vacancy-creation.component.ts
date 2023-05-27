@@ -57,6 +57,4 @@ export class VacancyCreationComponent {
         // Clear the input value
         event.chipInput!.clear();
     }
-
-
 }

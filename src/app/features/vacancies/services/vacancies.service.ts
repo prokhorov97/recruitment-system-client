@@ -18,7 +18,7 @@ export class VacanciesService {
         return this.httpClient.get(environment.apiUrl + '/api/vacancies/' + id);
     }
 
-    // createVacancy(vacany: any) {
-    //     return this.httpClient.post(environment.apiUrl + '/api/vacancies/');
-    // }
+    createVacancy(application: any) {
+        return this.httpClient.post(environment.apiUrl + '/api/applications', application);
+    }
 }

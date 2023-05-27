@@ -24,13 +24,6 @@ export class VacanciesListComponent implements OnInit {
     workFormatsFormControl = new FormControl([]);
     requiredExpiriencesFormControl = new FormControl([]);
 
-    // filterGroup = new FormGroup({
-    //     "vacancy": this.vacancyFormControl,
-    //     "cities":  this.citiesFormControl,
-    //     "workFormats":  this.workFormatsFormControl,
-    //     "requiredExp":  this.requiredExpiriencesFormControl
-    // });
-
     constructor(
         private router: Router,
         private vacanciesService: VacanciesService,

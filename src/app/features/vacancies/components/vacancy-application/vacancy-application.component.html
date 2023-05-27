@@ -5,49 +5,41 @@
             <mat-step [stepControl]="personDataFormGroup">
                 <form class="application-sub-section" [formGroup]="personDataFormGroup">
                     <ng-template matStepLabel>Персональные данные</ng-template>
-        
-                    <mat-form-field  class="filter-field" appearance="outline">
+
+                    <mat-form-field class="filter-field" appearance="outline">
                         <mat-label>Город проживания</mat-label>
-                        <mat-select  formControlName="city">
-                            <mat-option>--</mat-option>
-                            <mat-option value="one">Москва</mat-option>
-                            <mat-option value="two">СПБ</mat-option>
-                            <mat-option value="other">Другое</mat-option>
+                        <mat-select formControlName="city">
+                            <mat-option *ngFor="let city of cities" [value]="city">{{city.name}}</mat-option>
                         </mat-select>
                     </mat-form-field>
-        
-                    <!-- <mat-form-field appearance="outline">
-                        <mat-label>Желаемая должность (на всякий случай)</mat-label>
-                        <input matInput placeholder="Введите фамилию" formControlName="last_name" required>
-                    </mat-form-field> -->
 
                     <mat-form-field appearance="outline">
                         <mat-label>Фамилия</mat-label>
                         <input matInput placeholder="Введите фамилию" formControlName="last_name" required>
                     </mat-form-field>
-        
+
                     <mat-form-field appearance="outline">
                         <mat-label>Имя</mat-label>
                         <input matInput placeholder="Введите имя" formControlName="first_name" required>
                     </mat-form-field>
-        
+
                     <mat-form-field appearance="outline">
                         <mat-label>Отчество</mat-label>
                         <input matInput placeholder="Введите Отчество" formControlName="mid_name" required>
                     </mat-form-field>
-        
+
                     <mat-form-field appearance="outline">
                         <mat-label>Дата рождения</mat-label>
-                        <input matInput [matDatepicker]="picker" formControlName="birthday" required> 
+                        <input matInput [matDatepicker]="picker" formControlName="birthday" required>
                         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
-        
+
                     <mat-form-field appearance="outline">
                         <mat-label>Еmail</mat-label>
                         <input matInput placeholder="Введите email" formControlName="email" required>
                     </mat-form-field>
-        
+
                     <mat-form-field appearance="outline">
                         <mat-label>Номер телефона</mat-label>
                         <input matInput placeholder="Введите номер телеона" formControlName="phone" required>
@@ -55,13 +47,13 @@
                         <mat-icon matSuffix>phone</mat-icon> -->
                         <!-- <span matTextPrefix>+7&nbsp;</span> -->
                     </mat-form-field>
-        
+
                     <mat-form-field appearance="outline">
                         <mat-label>Telegram</mat-label>
                         <input matInput placeholder="Введите Telegram" formControlName="telegram" required>
                         <span matTextPrefix>@&nbsp;</span>
                     </mat-form-field>
-        
+
                     <div>
                         <button mat-flat-button matStepperNext color="primary">Далее</button>
                     </div>
@@ -75,26 +67,18 @@
                             <div class="application-sub-section-wrapper">
                                 <div class="application-sub-section" [formGroupName]="i">
                                     <mat-form-field appearance="outline">
-                                        <input matInput
-                                               formControlName="university"
-                                               placeholder="Учебное заведение">
+                                        <input matInput formControlName="university" placeholder="Учебное заведение">
                                     </mat-form-field>
                                     <mat-form-field appearance="outline">
-                                        <input matInput
-                                               formControlName="graduation_year"
-                                               placeholder="Год выпуска">
+                                        <input matInput type="number" formControlName="graduationYear"
+                                            placeholder="Год выпуска">
                                     </mat-form-field>
                                     <mat-form-field appearance="outline">
-                                        <input matInput
-                                               formControlName="specialization"
-                                               placeholder="Специализация">
+                                        <input matInput formControlName="specialization" placeholder="Специализация">
                                     </mat-form-field>
                                     <mat-form-field appearance="outline">
-                                        <mat-select formControlName="degree"
-                                                placeholder="Уровень образования">
-                                            <mat-option value="beginner">Бакалавр</mat-option>
-                                            <mat-option value="intermediate">Магистр</mat-option>
-                                            <mat-option value="advanced">Доктор</mat-option>
+                                        <mat-select formControlName="degree" placeholder="Уровень образования">
+                                            <mat-option *ngFor="let degree of degrees" [value]="degree">{{degree.name}}</mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
@@ -103,7 +87,7 @@
 
                         </ng-container>
                     </ng-container>
-                  
+
                     <div class="buttons">
                         <button class="button-add-education" mat-mini-fab color="primary" (click)="addEducation()">
                             <mat-icon class="add-course-btn">add</mat-icon>
@@ -124,36 +108,33 @@
                             <div class="application-sub-section-wrapper">
                                 <div class="application-sub-section" [formGroupName]="i">
                                     <mat-form-field appearance="outline">
-                                        <input matInput
-                                               formControlName="company_name"
-                                               placeholder="Название компании"
-                                               required>
+                                        <input matInput formControlName="companyName" placeholder="Название компании"
+                                            required>
                                     </mat-form-field>
                                     <mat-form-field appearance="outline">
-                                        <input matInput
-                                               formControlName="position_name"
-                                               placeholder="Должность"
-                                               required>
+                                        <input matInput formControlName="positionName" placeholder="Должность" required>
                                     </mat-form-field>
-                 
+
                                     <mat-form-field appearance="outline">
                                         <mat-label>Начало работы</mat-label>
-                                        <input matInput [matDatepicker]="start" formControlName="start_date" required> 
+                                        <input matInput [matDatepicker]="start" formControlName="startDate" required>
                                         <mat-datepicker-toggle matIconSuffix [for]="start"></mat-datepicker-toggle>
                                         <mat-datepicker #start></mat-datepicker>
                                     </mat-form-field>
-                        
+
 
                                     <mat-form-field appearance="outline">
                                         <mat-label>Окончание работы</mat-label>
-                                        <input matInput [matDatepicker]="end" formControlName="end_date" required> 
+                                        <input matInput [matDatepicker]="end" formControlName="endDate" required>
                                         <mat-datepicker-toggle matIconSuffix [for]="end"></mat-datepicker-toggle>
                                         <mat-datepicker #end></mat-datepicker>
                                     </mat-form-field>
 
                                     <mat-form-field appearance="outline">
                                         <mat-label>Обязанности и достижения</mat-label>
-                                        <textarea matInput formControlName="description" placeholder="Например, я увеличил эффективность ... в 2 раза..." required></textarea>
+                                        <textarea matInput formControlName="description"
+                                            placeholder="Например, я увеличил эффективность ... в 2 раза..."
+                                            required></textarea>
                                     </mat-form-field>
                                 </div>
                                 <mat-icon class="delete-btn" (click)="deleteExperience(i)">delete_forever</mat-icon>
@@ -161,7 +142,7 @@
 
                         </ng-container>
                     </ng-container>
-                  
+
                     <div class="buttons">
                         <button class="button-add-education" mat-mini-fab color="primary" (click)="addExperience()">
                             <mat-icon class="add-course-btn">add</mat-icon>
@@ -176,20 +157,18 @@
             <mat-step [stepControl]="skillsFormControl">
                 <form>
                     <ng-template matStepLabel>Навыки</ng-template>
-                    
-                    <mat-form-field class="application-sub-section"  appearance="outline">
+
+                    <mat-form-field class="application-sub-section" appearance="outline">
                         <mat-label>Навыки</mat-label>
                         <mat-chip-grid #chipGrid aria-label="Введите навыки" [formControl]="skillsFormControl">
-                          <mat-chip-row *ngFor="let skill of skills"
-                                        (removed)="removeSkill(skill)">
-                            {{skill}}
-                            <button matChipRemove [attr.aria-label]="'remove ' + skill">
-                              <mat-icon>cancel</mat-icon>
-                            </button>
-                          </mat-chip-row>
-                          <input placeholder="Введите навык и нажмите Enter..."
-                                 [matChipInputFor]="chipGrid"
-                                 (matChipInputTokenEnd)="addSkill($event)"/>
+                            <mat-chip-row *ngFor="let skill of skills" (removed)="removeSkill(skill)">
+                                {{skill}}
+                                <button matChipRemove [attr.aria-label]="'remove ' + skill">
+                                    <mat-icon>cancel</mat-icon>
+                                </button>
+                            </mat-chip-row>
+                            <input placeholder="Введите навык и нажмите Enter..." [matChipInputFor]="chipGrid"
+                                (matChipInputTokenEnd)="addSkill($event)" />
                         </mat-chip-grid>
                     </mat-form-field>
 
@@ -205,19 +184,27 @@
                 <form [formGroup]="finalFormGroup">
                     <ng-template matStepLabel>Отправление заявки</ng-template>
                     <mat-form-field class="application-sub-section" appearance="outline">
+                        <mat-label>Ожидаемая зарпалата</mat-label>
+                        <input matInput type="number" min="0" formControlName="expectedSalary">
+                    </mat-form-field>
+                    <mat-form-field class="application-sub-section" appearance="outline">
                         <mat-label>Расскажите о себе</mat-label>
-                        <textarea matInput formControlName="description" placeholder="Например, люблю заниматься..."></textarea>
+                        <textarea matInput formControlName="description"
+                            placeholder="Например, люблю заниматься..."></textarea>
                     </mat-form-field>
                 </form>
-                <mat-checkbox color="primary" [(ngModel)]="isAgree">Я даю согласие на обработку персональных данных</mat-checkbox>
+                <mat-checkbox color="primary" [(ngModel)]="isAgree">Я даю согласие на обработку персональных
+                    данных</mat-checkbox>
                 <div class="buttons">
                     <div class="step-buttons">
                         <button mat-flat-button matStepperPrevious color="primary">Назад</button>
-                        <button mat-flat-button matStepperNext color="primary" [disabled]="!isAgree" (click)="show()">Отправить зявку</button>
+                        <button mat-flat-button matStepperNext color="primary" [disabled]="!isAgree || errorMessage"
+                            (click)="sendApplication()">Отправить зявку</button>
                     </div>
+                    <div *ngIf="errorMessage">{{errorMessage}}</div>
                 </div>
             </mat-step>
         </mat-stepper>
     </div>
-    
+
 </div>

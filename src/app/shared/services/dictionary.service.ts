@@ -24,4 +24,9 @@ export class DictionaryService {
     getVacancyStatuses() {
         return this.httpClient.get(environment.apiUrl + '/api/vacancy-statuses'); 
     }
+
+    
+    getDegrees() {
+        return this.httpClient.get(environment.apiUrl + '/api/degrees'); 
+    }
 }
