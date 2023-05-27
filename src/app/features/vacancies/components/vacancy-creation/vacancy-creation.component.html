@@ -45,7 +45,7 @@
             </mat-step>
             <mat-step [stepControl]="conditionsFormGroup">
                 <form class="application-sub-section" [formGroup]="conditionsFormGroup">
-                    <ng-template matStepLabel>Требования</ng-template>
+                    <ng-template matStepLabel>Условия</ng-template>
         
                     <mat-form-field appearance="outline">
                         <mat-label>Минимальная зарплата</mat-label>
@@ -82,18 +82,18 @@
                     <ng-template matStepLabel>Описание вакансии</ng-template>
 
                     <mat-form-field class="application-sub-section" appearance="outline">
-                        <mat-label>Описание вакансии</mat-label>
-                        <textarea matInput formControlName="description"></textarea>
+                        <mat-label>Описание команды</mat-label>
+                        <textarea matInput placeholder="Расскажите про отдел, команду и глобальные цели" formControlName="description"></textarea>
                     </mat-form-field>
 
                     <mat-form-field class="application-sub-section" appearance="outline">
                         <mat-label>Список обязанностей</mat-label>
-                        <textarea matInput formControlName="responsibilities"></textarea>
+                        <textarea matInput placeholder="Расскажите про то, чем предстоит заниматься кандидату" formControlName="responsibilities"></textarea>
                     </mat-form-field>
 
                     <mat-form-field class="application-sub-section" appearance="outline">
                         <mat-label>Список требований</mat-label>
-                        <textarea matInput formControlName="requirements"></textarea>
+                        <textarea matInput placeholder="Расскажите про то, какой опыт должен быть у кандидата" formControlName="requirements"></textarea>
                     </mat-form-field>
 
                     <mat-form-field class="application-sub-section" appearance="outline">
@@ -132,7 +132,7 @@
                     <div class="buttons">
                         <div class="step-buttons">
                             <button mat-flat-button matStepperPrevious color="primary">Назад</button>
-                            <button mat-flat-button matStepperNext color="primary">Далее</button>
+                            <button mat-flat-button matStepperNext color="primary">Создать</button>
                         </div>
                     </div>
                 </form>

@@ -34,22 +34,26 @@ const routes: Routes = [
   {
     path: 'vacancy-creation',
     title: 'Создание вакансии',
-    component: VacancyCreationComponent
+    component: VacancyCreationComponent,
+    canActivate: [AuthGuard],
 },
   {
     path: 'candidates',
     title: 'Кандидаты',
-    component: CandidatesListComponent
+    component: CandidatesListComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'candidate/:id',
     title: 'Карточка кандидата',
-    component: CandidateCardComponent
+    component: CandidateCardComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'applications',
     title: 'Отклики',
-    component: CandidateApplicationsListComponent
+    component: CandidateApplicationsListComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'candidate',

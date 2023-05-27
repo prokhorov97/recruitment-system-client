@@ -11,6 +11,12 @@ export class VacanciesService {
     {}
 
     getVacanciesList() {
-        return this.httpClient.get(environment.apiUrl + '/api/vacancies');
+        return this.httpClient.get(environment.apiUrl + '/api/vacancies', { 
+            headers : {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
+                'Access-Control-Allow-Headers': 'X-Requested-With,content-type'
+            }});
     }
 }
