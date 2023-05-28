@@ -30,19 +30,19 @@ export class CandidateApplicationCardComponent implements OnInit {
     }
 
     reject() {
-        this.candidateService.reject(this.applicationId).subscribe(result => console.log(result));
+        this.candidateService.reject(this.applicationId).subscribe(result => this.application.applicationStatus = result);
     }
 
     invitation() {
-        this.candidateService.invitation(this.applicationId).subscribe(result => console.log(result));
+        this.candidateService.invitation(this.applicationId).subscribe(result => this.application.applicationStatus = result);
     }
 
     offer() {
-        this.candidateService.offer(this.applicationId).subscribe(result => console.log(result));
+        this.candidateService.offer(this.applicationId).subscribe(result => this.application.applicationStatus = result);
     }
 
     agreement() {
-        this.candidateService.agreement(this.applicationId).subscribe(result => console.log(result));
+        this.candidateService.agreement(this.applicationId).subscribe(result => this.application.applicationStatus = result);
     }
 
     accept() {

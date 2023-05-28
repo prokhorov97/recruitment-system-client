@@ -23,7 +23,7 @@ export class VacancyApplicationComponent implements OnInit {
         mid_name: ['', Validators.required],
         birthday: ['', Validators.required],
         email: ['', [Validators.required, Validators.email]],
-        phone:  ['',  [Validators.required, Validators.pattern('[7-8]{1}[0-9]{9}')]], 
+        phone:  ['',  [Validators.required, Validators.pattern('[7-8]{1}[0-9]{10}')]], 
         telegram: ['', Validators.required]
     });
     
