@@ -25,8 +25,15 @@ export class DictionaryService {
         return this.httpClient.get(environment.apiUrl + '/api/vacancy-statuses'); 
     }
 
+    getApplicationStatuses() {
+        return this.httpClient.get(environment.apiUrl + '/api/application-statuses'); 
+    }
     
     getDegrees() {
         return this.httpClient.get(environment.apiUrl + '/api/degrees'); 
+    }
+
+    getOwners() {
+        return this.httpClient.get(environment.apiUrl + '/api/owners'); 
     }
 }

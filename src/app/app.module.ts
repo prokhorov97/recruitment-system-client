@@ -11,6 +11,7 @@ import { CandidatesModule } from './features/candidates/candidates.module';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { SharedModule } from './shared/shared,module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { MatIconModule } from '@angular/material/icon';
     VacanciesModule,
     CandidatesModule,
     CoreModule,
+    SharedModule,
     BrowserAnimationsModule,
     MatMenuModule,
     MatButtonModule,

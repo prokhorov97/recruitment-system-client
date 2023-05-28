@@ -1,11 +1,11 @@
-<div class="candidate">
-    <div class="application-wrapper">
+<div *ngIf="candidate" class="candidate">
+    <!-- <div class="application-wrapper">
         <div class="application">
             <div>Текущий этап: {{candidate.application.status}}</div>   
             <div class="application-status">
               
-                <!-- <button class="application-button" mat-flat-button color="primary">Просмотреть</button> -->
-                <!-- <button class="application-button" mat-flat-button color="primary">Одобрить скриннинг</button> -->
+                <button class="application-button" mat-flat-button color="primary">Просмотреть</button>
+                <button class="application-button" mat-flat-button color="primary">Одобрить скриннинг</button>
                 <button class="application-button" mat-flat-button color="primary">Отправить оффер</button>
                 <button class="application-button" mat-flat-button color="warn">Отказать</button>
             </div>
@@ -18,17 +18,26 @@
             </mat-form-field>
             <button class="application-button" mat-flat-button color="primary">Сохранить комментарий</button>
         </div>
-    </div>
+    </div> -->
     
     <div class="candidate-card">
         <div class="candidate-card-header">
-            {{candidate.name}} {{candidate.position_name}}
+            {{candidate.lastName}} {{candidate.firstName}} {{candidate.midName}} {{candidate.desiredPosition}}
         </div>
         <div class="candidate-work-requiments">
-            <div>{{candidate.expected_salary}}</div>
+            <div>{{candidate.phone}}</div>
+            <div>
+                <a [href]="'mailto:' + candidate.email">{{candidate.email}}</a>
+            </div>
+            <div>
+                <a [href]="'https://t.me/'+ candidate.telegram">@{{candidate.telegram}}</a>
+            </div>
+        </div>
+        <div class="candidate-work-requiments">
+            <div>{{candidate.expectedSalary}} руб.</div>
             <div>{{candidate.city.name}}</div>
             <div>Возраст: {{candidate.age}}</div>
-            <div>Стаж: {{candidate.expirience}}</div>
+            <div>Стаж: {{candidate.experience}}</div>
         </div>
         <div class="candidate-card-content">
             <div class="description">{{candidate.description}}</div>
@@ -42,26 +51,27 @@
                 <div class="candidate-card-sub-header">
                     Опыт работы:
                 </div>
-                <div class="list" *ngFor="let experience of candidate.expiriences">
-                    <div >
-                        {{experience.position_name}} {{experience.company_name}}({{experience.start_date}} - {{experience.end_date}})
-                    </div>
-                    <div>
-                        {{experience.description}}
-                    </div>
-                </div>
+                <ul>
+                    <li *ngFor="let experience of candidate.experiences">
+                        <div >
+                            {{experience.positionName}} {{experience.companyName}}({{experience.startDate | date}} - {{experience.endDate | date}})
+                        </div>
+                        <div>
+                            {{experience.description}}
+                        </div>
+                    </li>
+                </ul>
+
             </div>
             <div class="content-item">
                 <div class="candidate-card-sub-header">
                     Образование:
                 </div>
-                <mat-list>
-                    <mat-list-item *ngFor="let education of candidate.educations">
-                        <div>
-                            {{education.university_name}} {{education.specialization}}({{education.year_start}} - {{education.year_end}})
-                        </div>
-                    </mat-list-item>
-                </mat-list>
+                <ul>
+                    <li *ngFor="let education of candidate.educations">
+                            {{education.university}} {{education.specialization}} ({{education.graduationYear}})
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

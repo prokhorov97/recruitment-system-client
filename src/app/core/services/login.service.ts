@@ -20,6 +20,7 @@ export class LoginService {
       // localStorage.setItem(this.role, token);
       this.router.navigate(['/']);
     });
+    this.loginClient.getCurrentUser().subscribe();
   }
 
   public logout() {

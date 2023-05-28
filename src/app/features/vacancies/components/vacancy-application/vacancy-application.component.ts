@@ -160,7 +160,7 @@ export class VacancyApplicationComponent implements OnInit {
             experiences: this.expirienceFormGroup.controls.experiences.value
         }
 
-        this.vacanciesService.createVacancy(application)
+        this.vacanciesService.createApplication(application)
             .subscribe((result: any) => {
                 if (result?.created) {
                     this.router.navigate(['/gratitude']);

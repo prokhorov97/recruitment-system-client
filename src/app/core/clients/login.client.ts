@@ -19,4 +19,8 @@ export class LoginClient {
       { responseType: 'text' }
     );
   }
+
+  getCurrentUser() {
+    return this.http.post(environment.apiUrl  + '/api/users/current', {});
+  }
 }

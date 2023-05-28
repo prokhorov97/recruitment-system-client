@@ -18,12 +18,14 @@ import { MatChipsModule } from '@angular/material/chips';
 import { CandidatesListComponent } from "./components/candidates-list/candidates-list.component";
 import { CandidateApplicationsListComponent } from "./components/candidate-applications-list/candidate-applications-list.component";
 import { CandidateCardComponent } from "./components/candidate-card/candidate-card.component";
+import { CandidateApplicationCardComponent } from "./components/candidate-application-card/candidate-application-card.component";
 
 @NgModule({
     declarations: [
         CandidatesListComponent,
         CandidateApplicationsListComponent,
-        CandidateCardComponent
+        CandidateCardComponent,
+        CandidateApplicationCardComponent
     ],
     imports: [
         MatListModule,
@@ -46,7 +48,8 @@ import { CandidateCardComponent } from "./components/candidate-card/candidate-ca
     exports: [
         CandidatesListComponent,
         CandidateApplicationsListComponent,
-        CandidateCardComponent
+        CandidateCardComponent,
+        CandidateApplicationCardComponent
     ],
     providers: [
         CandidatesService

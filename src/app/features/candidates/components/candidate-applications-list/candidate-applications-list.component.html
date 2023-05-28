@@ -1,6 +1,13 @@
 <div class="candidates">
-    <div [style.visibility]="candidates.length != 0 ? 'visible' : 'hidden'" class="candidate-list-fliters-wrapper">
+    <div class="candidate-list-fliters-wrapper">
         <div class="candidate-list-filters">
+            <mat-form-field  class="filter-field" appearance="outline">
+                <mat-label>Сортировка</mat-label>
+                <mat-select [formControl]="sortTypeFormControl" (selectionChange)="sort()">
+                    <mat-option *ngFor="let sortType of sortTypes" [value]="sortType">{{sortType.displayText}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
             <mat-form-field  class="filter-field" appearance="outline">
                 <mat-label>Мои вакансии</mat-label>
                 <mat-select multiple>
@@ -13,46 +20,41 @@
             <div class="range-filter">
                 <mat-form-field  class="range-field" appearance="outline">
                     <mat-label>Город</mat-label>
-                    <mat-select multiple>
-                        <mat-option value="one">Москва</mat-option>
-                        <mat-option value="two">СПБ</mat-option>
-                        <mat-option value="other">Другое</mat-option>
+                    <mat-select [formControl]="citiesFormControl" multiple (selectionChange)="filter()">
+                        <mat-option *ngFor="let city of cities" [value]="city">{{city.name}}</mat-option>
                     </mat-select>
                 </mat-form-field>
     
                 <mat-form-field  class="range-field" appearance="outline">
-                    <mat-label>Этап отбора</mat-label>
-                    <mat-select multiple>
-                        <mat-option value="one">Получен отклик</mat-option>
-                        <mat-option value="two">Назначено собеседование</mat-option>
-                        <mat-option value="other">Отправлен оффер</mat-option>
-                        <mat-option value="three">Принят оффер</mat-option>
-                        <mat-option value="three">Отказ</mat-option>
+                    <mat-label>Этап отобора</mat-label>
+                    <mat-select [formControl]="applicationStatusesFormControl" multiple (selectionChange)="filter()">
+                        <mat-option *ngFor="let appStatus of applicationStatuses" [value]="appStatus">{{appStatus.name}}</mat-option>
                     </mat-select>
                 </mat-form-field>
+    
             </div>
 
             <div class="range-filter">
                 <mat-form-field  class="range-field" appearance="outline">
                     <mat-label>Мин. ЗП</mat-label>
-                    <input type="number" min="0" matInput>
+                    <input type="number" min="0" matInput [formControl]="minSalaryFormControl" (input)="filter()">
                 </mat-form-field>
     
                 <mat-form-field  class="range-field" appearance="outline">
                     <mat-label>Макс. ЗП</mat-label>
-                    <input type="number" min="0" matInput>
+                    <input type="number" min="0" matInput [formControl]="maxSalaryFormControl" (input)="filter()">
                 </mat-form-field>
             </div>
 
             <div class="range-filter">
                 <mat-form-field  class="range-field" appearance="outline">
                     <mat-label>Мин. стаж</mat-label>
-                    <input type="number" min="0" matInput>
+                    <input type="number" min="0" matInput [formControl]="minExpFormControl" (input)="filter()">
                 </mat-form-field>
     
                 <mat-form-field  class="range-field" appearance="outline">
                     <mat-label>Макс. стаж</mat-label>
-                    <input type="number" min="0" matInput>
+                    <input type="number" min="0" matInput [formControl]="maxExpFormControl" (input)="filter()">
                 </mat-form-field>
             </div>
 
@@ -73,20 +75,20 @@
             </mat-form-field>
 
 
-            <button class="filter-button" mat-flat-button color="primary">Сбросить фильтры</button>
+            <button class="filter-button" mat-flat-button color="primary" (click)="resetFilters()">Сбросить фильтры</button>
         </div>
     </div>
     
 
     <mat-list role="list">
         <div class="candidates-list-header" mat-subheader>Отклики</div>
-        <div class="candidates-list-sub-header" *ngIf="candidates.length == 0">Данных нет</div>
-        <mat-list-item class="candidate-list-item" *ngFor="let candidate of candidates">
-            <div class="candidate-preview" (click)="openCandidate(candidate)">
-                <div class="candidate-work"><div>{{candidate.expected_salary}} руб.</div><div>{{candidate.city}}</div></div>
-                <div class="candidate-name">{{candidate.fio}} (Стаж {{candidate.experience_years}})</div>
-                <div class="candidate-skills">{{candidate.skills}}</div>
-                <div class="candidate-contacts"><div>{{candidate.phone}}</div><div><a [href]="'mailto:' + candidate.email">{{candidate.email}}</a></div><div><a [href]="'https://t.me/'+ candidate.telegram">@{{candidate.telegram}}</a></div></div>
+        <div class="candidates-list-sub-header" *ngIf="applicationsFiltered.length == 0">Данных нет</div>
+        <mat-list-item class="candidate-list-item" *ngFor="let application of applicationsFiltered">
+            <div class="candidate-preview" (click)="openCandidate(application)">
+                <div class="candidate-work"><div>{{application.expectedSalary}} руб.</div><div>{{application.city.name}}</div><div>Дата отклика: {{application.createdAt | date}}</div></div>
+                <div class="candidate-name">{{application.fio}} {{application.vacancyName}} (Стаж {{application.experience}})</div>
+                <div class="candidate-skills">{{application.skills}}</div>
+                <div class="candidate-contacts"><div>{{application.phone}}</div><div><a [href]="'mailto:' + application.email">{{application.email}}</a></div><div><a [href]="'https://t.me/'+ application.telegram">@{{application.telegram}}</a></div></div>
             </div>
         </mat-list-item>
     </mat-list>

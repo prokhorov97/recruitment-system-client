@@ -15,6 +15,7 @@ import { CandidateApplicationsListComponent } from './features/candidates/compon
 import { CandidateCardComponent } from './features/candidates/components/candidate-card/candidate-card.component';
 import { RegistrationComponent } from './core/components/registration/registration.component';
 import { LoginComponent } from './core/components/login/login.component';
+import { CandidateApplicationCardComponent } from './features/candidates/components/candidate-application-card/candidate-application-card.component';
 
 const routes: Routes = [
   {
@@ -22,14 +23,19 @@ const routes: Routes = [
     title: 'Авторизация',
     component: LoginComponent,
   },
-  {
-    path: 'registration',
-    title: 'Регистрация',
-    component: RegistrationComponent,
-  },
+  // {
+  //   path: 'registration',
+  //   title: 'Регистрация',
+  //   component: RegistrationComponent,
+  // },
   {
     path: 'vacancies',
     title: 'Вакансии',
+    component: VacanciesListComponent
+  },
+  {
+    path: 'my-vacancies',
+    title: 'Мои вакансии',
     component: VacanciesListComponent
   },
   {
@@ -64,6 +70,12 @@ const routes: Routes = [
     path: 'applications',
     title: 'Отклики',
     component: CandidateApplicationsListComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'application/:id',
+    title: 'Отклик кандидата',
+    component: CandidateApplicationCardComponent,
     canActivate: [AuthGuard],
   },
   {

@@ -5,24 +5,31 @@ import { MatIconModule } from "@angular/material/icon";
 import { PhoneInputComponent } from "./components/phone-input/phone-input.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { DictionaryService } from "./services/dictionary.service";
+import { MatListModule } from "@angular/material/list";
+import { CalendarComponent } from "./components/calendar/calendar.component";
+import { CalendarService } from "./services/calendar.service";
 
 @NgModule({
     declarations: [
         ModalComponent,
-        PhoneInputComponent
+        PhoneInputComponent,
+        CalendarComponent
     ],
     exports: [
         ModalComponent,
-        PhoneInputComponent
+        PhoneInputComponent,
+        CalendarComponent
     ],
     providers: [
         ModalService,
-        DictionaryService
+        DictionaryService,
+        CalendarService
     ],
     imports: [
         MatIconModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatListModule
     ]
 })
 export class SharedModule {}

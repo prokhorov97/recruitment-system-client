@@ -14,11 +14,19 @@ export class VacanciesService {
         return this.httpClient.get(environment.apiUrl + '/api/vacancies');
     }
 
+    getVacanciesListByHr() {
+        return this.httpClient.get(environment.apiUrl + '/api/vacancies/hr');
+    }
+
     getVacancy(id: number) {
         return this.httpClient.get(environment.apiUrl + '/api/vacancies/' + id);
     }
 
-    createVacancy(application: any) {
+    createApplication(application: any) {
         return this.httpClient.post(environment.apiUrl + '/api/applications', application);
+    }
+
+    createVacancy(vacancy: any) {
+        return this.httpClient.post(environment.apiUrl + '/api/vacancies', vacancy);
     }
 }

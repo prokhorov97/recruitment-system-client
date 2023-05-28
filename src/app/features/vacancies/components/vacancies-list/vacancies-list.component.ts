@@ -37,14 +37,27 @@ export class VacanciesListComponent implements OnInit {
 
     loadVacancies() {
         this.isDataLoaded = false;
-        this.vacanciesService.getVacanciesList()
+
+        if (this.router.url.includes('my-vacancies')) {
+            this.vacanciesService.getVacanciesListByHr()
             .subscribe((result: any) => {
                 this.vacancies = result;
                 this.vacanciesFiltered = this.vacancies;
                 this.isDataLoaded = true    
             }, error => {
                 this.isDataLoaded = true
-        });
+            });
+        } else {
+            this.vacanciesService.getVacanciesList()
+            .subscribe((result: any) => {
+                this.vacancies = result;
+                this.vacanciesFiltered = this.vacancies;
+                this.isDataLoaded = true    
+            }, error => {
+                this.isDataLoaded = true
+            });
+        }
+
     }
     
     getFilters() {

@@ -1,0 +1,24 @@
+<div *ngIf="application" class="application">
+        <div class="application-wrapper">
+        <div class="application-status">
+            <div>Текущий этап: {{application.applicationStatus.name}}</div>   
+            <div class="application-status-buttons">
+                <button (click)="agreement()" *ngIf="application.applicationStatus.id === 1" class="application-button" mat-flat-button color="primary">Отправить заказчику на согласование</button>
+                <button (click)="invitation()" *ngIf="application.applicationStatus.id === 2" class="application-button" mat-flat-button color="primary">Пригласить на собеседование</button>
+                <button (click)="offer()" *ngIf="application.applicationStatus.id === 3" class="application-button" mat-flat-button color="primary">Отправить оффер</button>
+                <button (click)="accept()" *ngIf="application.applicationStatus.id === 5" class="application-button" mat-flat-button color="primary">Принять кандидата</button>
+                <button (click)="reject()" class="application-button" mat-flat-button color="warn">Отказать</button>
+            </div>
+
+        </div>
+
+        <div class="comment">
+            <mat-form-field appearance="outline">
+                <textarea matInput placeholder="Комментарий">{{application.comment}}</textarea>
+            </mat-form-field>
+            <button class="application-button" mat-flat-button color="primary">Сохранить комментарий</button>
+        </div>
+    </div>
+    <candidate-card [candidateId]="application.candidate.id">
+    </candidate-card>
+</div>
