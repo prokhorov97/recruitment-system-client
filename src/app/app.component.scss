@@ -39,6 +39,12 @@ header {
     top: 100px;
 }
 
+.person-icon {
+    font-size: 40px !important;
+    height: 40px !important;
+    width: 40px !important;
+}
+
 @media (max-width:500px) {
     header {
         a {

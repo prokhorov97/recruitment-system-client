@@ -13,8 +13,8 @@
             <button [routerLink]="'/vacancy-creation'"mat-menu-item>Создать вакансию</button>
         </mat-menu>
 
-        <a [matMenuTriggerFor]="personalAccountMenu"><mat-icon >person</mat-icon></a>
-        <mat-menu #personalAccountMenu="matMenu">
+        <a [matMenuTriggerFor]="personalAccountMenu"><mat-icon class="person-icon">person</mat-icon></a>
+        <mat-menu  #personalAccountMenu="matMenu">
           <button *ngIf="loginService.isLoggedIn()" (click)="loginService.logout()" mat-menu-item>Выйти</button>
           <button *ngIf="!loginService.isLoggedIn()" [routerLink]="'/login'" mat-menu-item>Войти</button>
           <!-- <button *ngIf="!loginService.isLoggedIn()" [routerLink]="'/дщпшт'" mat-menu-item>Регистрация</button> -->
