@@ -16,7 +16,8 @@ import { CalendarService } from "../../services/calendar.service";
     }
         
     getToken() {
-       this.calendarService.getToken2().subscribe((result: any) => console.log(result)); 
+        this.calendarService.getToken().subscribe((result: any) => console.log(result));
+        this.calendarService.getToken2().subscribe((result: any) => console.log(result)); 
     }
 
   }
