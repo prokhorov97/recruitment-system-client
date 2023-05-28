@@ -2,6 +2,13 @@
     <div class="candidate-list-fliters-wrapper">
         <div class="candidate-list-filters">
             <mat-form-field  class="filter-field" appearance="outline">
+                <mat-label>Сортировка</mat-label>
+                <mat-select [formControl]="sortTypeFormControl" (selectionChange)="sort()">
+                    <mat-option *ngFor="let sortType of sortTypes" [value]="sortType">{{sortType.displayText}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field  class="filter-field" appearance="outline">
                 <mat-label>Поиск по вакансии</mat-label>
                 <input   matInput [formControl]="vacancyFormControl" (input)="filter()">
             </mat-form-field>

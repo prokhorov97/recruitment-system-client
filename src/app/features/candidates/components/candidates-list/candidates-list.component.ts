@@ -19,12 +19,31 @@ export class CandidatesListComponent implements OnInit {
     candidates: any[] = [];
     candidatesFiltered: any[] = [];
 
+    sortTypeFormControl = new FormControl();
     vacancyFormControl = new FormControl('');
     citiesFormControl = new FormControl([]);
     minSalaryFormControl = new FormControl();
     maxSalaryFormControl = new FormControl();
     minExpFormControl = new FormControl();
     maxExpFormControl = new FormControl();
+
+    sortTypes = [
+        {
+            id: 1,
+            displayText: 'Сортировать по возрастанию ожидаемой зп'
+        },
+        {
+            id: 2,
+            displayText: 'Сортировать по убыванию ожидаемой зп'
+        },
+        {
+            id: 3,
+            displayText: 'Сортировать по возрастанию стажа'
+        },        {
+            id: 4,
+            displayText: 'Сортировать по убыванию стажа'
+        }
+    ]
 
     constructor(
         private router: Router,
@@ -122,5 +141,20 @@ export class CandidatesListComponent implements OnInit {
 
         this.citiesFormControl = new FormControl([]);
         this.skillsFormControl = new FormControl([]);
+    }
+
+    sort() {
+        let sortType = this.sortTypeFormControl.value;
+        if (sortType.id === 1)
+            this.candidatesFiltered = this.candidatesFiltered.sort((a, b) => a.expectedSalary-b.expectedSalary);
+
+        if (sortType.id === 2)
+            this.candidatesFiltered = this.candidatesFiltered.sort((a, b) => b.expectedSalary-a.expectedSalary);
+
+        if (sortType.id === 3)
+            this.candidatesFiltered = this.candidatesFiltered.sort((a, b) => a.experienceNumber-b.experienceNumber);
+
+        if (sortType.id === 4)
+            this.candidatesFiltered = this.candidatesFiltered.sort((a, b) => b.experienceNumber-a.experienceNumber);
     }
 }
