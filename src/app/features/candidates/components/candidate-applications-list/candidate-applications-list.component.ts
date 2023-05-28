@@ -90,7 +90,7 @@ export class CandidateApplicationsListComponent implements OnInit {
     }
 
     openCandidate(candidate: any) {
-        this.router.navigate(['/application', candidate.id])
+        this.router.navigate(['/application', candidate.applicationId])
     }
 
 

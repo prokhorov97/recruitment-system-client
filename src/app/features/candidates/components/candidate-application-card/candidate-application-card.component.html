@@ -14,9 +14,9 @@
 
         <div class="comment">
             <mat-form-field appearance="outline">
-                <textarea matInput placeholder="Комментарий">{{application.comment}}</textarea>
+                <textarea matInput placeholder="Комментарий" [(ngModel)]="application.comment"></textarea>
             </mat-form-field>
-            <button class="application-button" mat-flat-button color="primary">Сохранить комментарий</button>
+            <button class="application-button" mat-flat-button color="primary"  (click)="updateComment()">Сохранить комментарий</button>
         </div>
     </div>
     <candidate-card [candidateId]="application.candidate.id">

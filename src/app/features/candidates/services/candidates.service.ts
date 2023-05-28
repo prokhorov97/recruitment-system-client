@@ -27,7 +27,7 @@ export class CandidatesService {
     }
 
     reject(idApplication: number) {
-        return this.httpClient.post(environment.apiUrl + '/api/mail/reject',  {idApplication});
+        return this.httpClient.post(environment.apiUrl + '/api/mail/reject',  {ID: idApplication});
     }
 
     offer(idApplication: number) {
@@ -44,5 +44,9 @@ export class CandidatesService {
 
     accept(idApplication: number) {
         return this.httpClient.post(environment.apiUrl + '/api/mail/accept', {idApplication});
+    }
+
+    updateComment(id: number, comment: string) {
+        return this.httpClient.put(environment.apiUrl + '/api/applications/' + id, {name: comment});
     }
 }
